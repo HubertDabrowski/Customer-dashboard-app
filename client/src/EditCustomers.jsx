@@ -54,16 +54,14 @@ const EditCustomers = () => {
   const renderArr = data.data.map((customer) => {
     return (
       <div key={customer.VAT_number} className="grid grid-cols-9 gap-4">
-        <span className="col-span-2 pt-1 pb-1">
-          {customer.name}ID: {customer.id}
-        </span>
+        <span className="col-span-2 pt-1 pb-1">{customer.name}</span>
         <span className="col-span-2 pt-1 pb-1">{customer.VAT_number}</span>
         <span className="col-span-2 pt-1 pb-1">{customer.creation_date}</span>
         <span className="col-span-2 pt-1 pb-1">{customer.address}</span>
         <button
           key={customer.id}
           onClick={() => {
-            console.log("my_id" + customer.id);
+            console.log("my_id " + customer.id);
             clickHandle(customer.id);
           }}
           className="bg-yellow-400 mb-1 mt-1 pl-1 pr-1 pb-1 w-2/4 rounded-md font-bold"
