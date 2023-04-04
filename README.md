@@ -1,12 +1,11 @@
 # Setup<br>
-1. Clone repo.
-2. Enter Recruitment-task directory. >cd Recruitment-task
-3. Enter server directory. >cd server
-4. Install packages. >npm install
-5. Start server. > node index
-6. In other terminal enter Recruitment-task and client directory. >cd Recruitment-task/client
-7. Start react-app. >npm start
-8. App should start in the browser at http://localhost:3000/
+1. Clone repo. >git clone https://github.com/HubertDabrowski/Recruitment-task.git
+2. Open terminal and enter Recruitment-task and server directory. >cd Recruitment-task/server
+3. Install packages. >npm install
+4. Start server. > node index
+5. In other terminal enter Recruitment-task and client directory. >cd Recruitment-task/client
+6. Start react-app. >npm start
+7. App should start in the browser at http://localhost:3000/
 
 # Preview<br>
 1. Home page
