@@ -4,8 +4,9 @@
 3. Install packages. >npm install
 4. Start server. > node index
 5. In other terminal enter Recruitment-task and client directory. >cd Recruitment-task/client
-6. Start react-app. >npm start
-7. App should start in the browser at http://localhost:3000/
+6. Install packages. >npm install
+7. Start react-app. >npm start
+8. App should start in the browser at http://localhost:3000/
 
 # Preview<br>
 1. Home page
