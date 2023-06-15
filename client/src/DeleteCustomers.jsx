@@ -13,15 +13,15 @@ const DeleteCustomers = () => {
     fetchData();
   }, [render]);
 
-  const clickHandle = (id) => {
+  const clickHandle = async(id) => {
     console.log(id);
-    fetch(`/api/customers/${id}`, {
+    await fetch(`/api/customers/${id}`, {
       method: "DELETE",
     });
     setRender((prev) => !prev);
   };
 
-  const renderArr = data.data.map((customer) => {
+  const renderArr =data.data.length>0 && data.data.map((customer) => {
     return (
       <div key={customer.VAT_number} className="grid grid-cols-9 gap-4">
         <span className="col-span-2 pt-1 pb-1">{customer.name}</span>

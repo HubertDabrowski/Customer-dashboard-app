@@ -46,7 +46,7 @@ class AddCustomers extends Component {
               />
             </label>
             <input
-              className="w-40 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded cursor-pointer"
+              className="flex justify-center w-40 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded cursor-pointer"
               type="submit"
               value="Submit"
             />

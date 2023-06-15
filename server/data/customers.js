@@ -1,5 +1,4 @@
-{
-  "array": [
+const customers = [
     {
       "id": "0",
       "name": "Hubert",
@@ -26,4 +25,5 @@
       "address": "Truskawkowa 98/7, Kraków"
     }
   ]
-}
+
+  export default customers

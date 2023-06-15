@@ -2,14 +2,14 @@ import { useState, useEffect } from "react";
 import EditForm from "./EditForm";
 
 const EditCustomers = () => {
-  const [data, setData] = useState({ success: false, data: [] });
+  const [data, setData] = useState([]);
   const [render, setRender] = useState(true);
   const [editData, setEditData] = useState({
     id: "-",
     name: "-",
     VAT_number: "-",
-    creation_date: "-",
     address: "-",
+    creation_date: "-"
   });
   const [isForm, setIsForm] = useState(false);
 
@@ -17,28 +17,29 @@ const EditCustomers = () => {
     const fetchData = async () => {
       const res = await fetch("/api/customers");
       const customers = await res.json();
-      setData(await customers);
+      const array = Object.keys(customers.data)
+      .map(key => {
+          return customers.data[key];
+      });
+      setData(array);
       //console.log(data);
     };
     fetchData();
   }, [render]);
 
-  const clickHandle = async (id) => {
-    console.log(data.data[id]);
-    const index = data.data.findIndex((i) => i.id === id);
+  const clickHandle =  (id) => {
+    const index = data.findIndex((i) => i.id === id);
     setEditData({
-      id: id,
-      name: await data.data[index].name, //tu musi byc numer z array
-      VAT_number: await data.data[index].VAT_number,
-      creation_date: await data.data[index].creation_date,
-      address: await data.data[index].address,
+      id:  data[index].id,
+      name:  data[index].name, //tu musi byc numer z array
+      VAT_number:  data[index].VAT_number,
+      address:  data[index].address,
+      creation_date: data[index].creation_date
     });
     setIsForm(true);
   };
 
   const submitHandle = (id) => {
-    console.log("qwe" + editData);
-    //event.preventDefault();
     fetch(`/api/customers/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -51,9 +52,10 @@ const EditCustomers = () => {
     return false;
   };
 
-  const renderArr = data.data.map((customer) => {
-    return (
-      <div key={customer.VAT_number} className="grid grid-cols-9 gap-4">
+  const renderArr =data.length > 0 && data.map((customer) => {
+   return (
+      
+      <div key={customer.id} className="grid grid-cols-9 gap-4">
         <span className="col-span-2 pt-1 pb-1">{customer.name}</span>
         <span className="col-span-2 pt-1 pb-1">{customer.VAT_number}</span>
         <span className="col-span-2 pt-1 pb-1">{customer.creation_date}</span>
@@ -76,7 +78,7 @@ const EditCustomers = () => {
     <>
       {!isForm ? (
         <div className="bg-white mt-10 p-10 pl-20 ml-52 mr-52 rounded-2xl bg-opacity-80 shadow-2xl">
-          {data.data.length > 0 ? (
+          {data.length > 0 ? (
             <>
               <div className="pb-2 grid grid-cols-9 gap-4">
                 <p className="col-span-2 font-bold">Name:</p>
